@@ -1,0 +1,8 @@
+{% extends "coltrane/base_entry_archive.html" %}
+
+{% block title %}{{ block.super }} | {{ category.title }}{% endblock %}
+
+{% block content %}
+    <h2>Entries filed under '{{ category.title }}'</h2>
+    {{ block.super }}
+{% endblock %}

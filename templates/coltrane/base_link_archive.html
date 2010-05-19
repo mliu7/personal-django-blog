@@ -1,0 +1,12 @@
+{% extends "coltrane/base_links.html" %}
+
+{% block content %}
+    {% for link in object_list %}
+        <h2>{{ link.title }}</h2>
+        <p>Published on {{ link.pub_date|date:"F j, Y" }}</p>
+        {% if link.description_html %}
+            {{ link.description_html|truncatewords_html:"50"|safe }}
+        {% endif %}
+        <p><a href="{{ link.get_absolute_url }}">See more details</a></p>
+    {% endfor %}
+{% endblock %}

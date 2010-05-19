@@ -1,0 +1,36 @@
+{% extends "coltrane/base_links.html" %}
+
+{% block title %}{{ block.super }} | {{ object.title }}{% endblock %}
+
+{% block content %}
+    <h2>{{ object.title }}</h2>
+    
+    <p>{{ object.description_html|safe }}</p>
+
+    <p><a href="{{ object.url }}">Visit it</a></p>
+
+    {% if object.via_url or object.via_name %}
+        <p>Via: 
+            {% if object.via_url %}<a href="{{ object.via_url }}">{% endif %}
+            {% if object.via_name %}{{ object.via_name }}{% else %}{{ object.via_url }}{% endif %}
+            {% if object.via_url %}</a>{% endif %}
+        </p>
+    {% endif %}
+{% endblock %}
+
+{% block whatis %}
+    <p>This is a link published on {{ object.pub_date|date:"F j, Y" }}.</p>
+    
+    {% if object.tags.count %}
+        <p>This link is tagged with 
+            {% for tag in object.tags %}
+                <a href="{% url coltrane_link_archive_tag tag.name %}">{{ tag.name }}</a>
+                {% if forloop.last %}{% else %}
+                    {% ifequal forloop.revcounter0 1 %}and {% else %}, {% endifequal %}
+                {% endif %}
+            {% endfor %}
+        </p>
+    {% else %}
+        <p>This link doesn't have any tags.</p>
+    {% endif %}
+{% endblock %}

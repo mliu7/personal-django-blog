@@ -1,0 +1,13 @@
+{% extends "coltrane/base_tags.html" %}
+
+{% block title %}{{ block.super }}{% endblock %}
+
+{% block content %}
+    <h2>Tags</h2>
+    
+    <p>[No idea how to add links to these, as they could need to go to the entries_by_tag or links_by_tag template.]</p>
+    
+    {% for tag in object_list %}
+      <p>{{ tag.name }}</p>
+    {% endfor %}
+{% endblock %}

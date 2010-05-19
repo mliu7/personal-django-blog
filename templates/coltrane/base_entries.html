@@ -1,0 +1,44 @@
+{% extends "coltrane/base.html" %}
+
+{% block title %}{{ block.super }} | Entries{% endblock %}
+
+{% block extra-css %}{{ block.super }} 
+<link rel="stylesheet" href="{{ MEDIA_URL }}/css/blueprint/plugins/buttons/screen.css" type="text/css" media="screen, projection">
+{% endblock %}
+
+{% block right-sidebar %}{{ block.super }} 
+    <div class="sidebar-block">
+        <h3>Categories</h3>
+        {% load coltrane_tags %}
+        {% categories_for_model coltrane.entry as entry_categories with counts %}
+            <ul>
+                {% for category in entry_categories %}
+                    {% if category.count %}
+                        <li>
+                            <a href="{{ category.get_absolute_entries_url }}" title="{{ category.title }}">{{ category.title }}</a> ({{ category.count }})
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+    </div>
+    <div class="sidebar-block">
+        <h3>All Entry Tags</h3>
+        {% load tagging_tags %}
+        {% tags_for_model coltrane.entry as entry_tags with counts %}
+        {% for tag in entry_tags %}
+            <a href="{% url coltrane_entry_archive_tag tag.name %}"><button>{{ tag.name }} ({{ tag.count }})</button></a>
+        {% endfor %}
+    </div>
+    <div class="sidebar-block">
+        <h3>Latest Entries</h3>
+        {% load coltrane_tags %}
+        {% get_latest_content coltrane.entry 10 as latest_entries %}
+        <ul>
+            {% for entry in latest_entries %}
+                <li>
+                    <a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

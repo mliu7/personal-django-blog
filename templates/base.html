@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>{% block title %}Mark's Blog{% endblock %}</title>
+
+    <link rel="stylesheet" href="/media/css/custom.css" type="text/css" media="screen, projection">	
+    <link rel="stylesheet" href="/media/css/blueprint/screen.css" type="text/css" media="screen, projection">
+    <link rel="stylesheet" href="/media/css/blueprint/print.css" type="text/css" media="print">	
+    <!--[if lt IE 8]><link rel="stylesheet" href="/media/css/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
+    {% block extra-css %}{% endblock %}
+</head>
+<body class="{% block bodyclass %}{% endblock %}">
+    <div class="header-container">
+        <div class="container">
+            <div id="header" class="span-24 last">
+                <div class="span-16">
+                    <h1 id="branding">Mark's Blog</h1>
+                </div>
+                <div class="span-8 last">
+                    <ul id="main-nav">
+                        <li id="main-nav-entries"><a href="{% url coltrane_entry_archive_index %}">Blog</a></li>
+                        <li id="main-nav-links"><a href="{% url coltrane_link_archive_index %}">Links</a></li>
+                        <li id="main-nav-about"><a href="#">About Me</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div id="content" class="span-16">
+            {% block content %}
+            {% endblock %}
+        </div>
+        <div id="right-sidebar" class="span-8 last">
+            {% block right-sidebar %}
+            {% endblock %}
+        </div>
+    </div>
+    <div class="footer-container-1">
+        <div class="container">
+            <div id="footer-1" class="span-24 last">
+                First footer
+            </div>
+        </div>
+    </div>
+    <div class="footer-container-2">
+        <div class="container">
+            <div id="footer-2" class="span-24 last">
+                Find me other places: 
+                <a href="http://delicious.com/mliu7">Delicious</a>
+                <a href="http://www.facebook.com/mliu7">Facebook</a>
+                <a href="http://github.com/mliu7">Github</a>
+                <a href="http://www.linkedin.com/in/markwliu">LinkedIn</a>
+                <a href="http://twitter.com/MarkWLiu">Twitter</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-container-3">
+        <div class="container">
+            <div id="footer-3" class="span-24 last">
+                Like this blog? I will be releasing the source code on github shortly. Please feel free to use and modify it however you please.
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+{% extends "coltrane/base_entries.html" %}
+
+{% block title %}{{ block.super }} | {{ object.title }}{% endblock %}
+
+{% block extra-css %}{{ block.super }} 
+    <link rel="stylesheet" href="/media/css/blueprint/plugins/buttons/screen.css" type="text/css" media="screen, projection">
+{% endblock %}
+
+{% block content %}
+    <h2>{{ object.title }}</h2>
+    <p>Published on {{ object.pub_date|date:"F j, Y" }}.
+        {% if object.categories.count %}
+            Under 
+            {% for category in object.categories.all %}
+                <a href="{{ category.get_absolute_url }}">{{ category.title }}</a>
+                {% if forloop.last %}{% else %}
+                    {% ifequal forloop.revcounter0 1 %}and {% else %}, {% endifequal %}
+                {% endif %}
+            {% endfor %}
+        {% endif %} 
+    </p>
+
+    {{ object.body_html|safe }}
+{% endblock %}
+
+{% block right-sidebara %}
+    <div class="sidebar-block">
+        <h3>This Post's Tags</h3>
+        {% load tagging_tags %}
+        {% tags_for_object object as object_tags %}
+        {% for tag in object_tags %}
+            <a href="{% url coltrane_entry_archive_tag tag.name %}"><button>{{ tag.name }}</button></a>
+        {% endfor %}
+    </div>
+    {{ block.super }}
+{% endblock %}
+
+{% block whatis %}
+    {% if object.categories.count %}
+        <p>This entry is part of the categor{{ object.categories.count|pluralize:"y,ies" }}
+            {% for category in object.categories.all %}
+                <a href="{{ category.get_absolute_url }}">{{ category.title }}</a>
+                {% if forloop.last %}{% else %}
+                    {% ifequal forloop.revcounter0 1 %}and {% else %}, {% endifequal %}
+                {% endif %}
+            {% endfor %}
+    {% else %}
+        <p>This entry isn't part of any categories.</p>
+    {% endif %}
+    
+    {% if object.etags.count %}
+        <p>This entry is tagged with 
+            {% for tag in object.etags %}
+                <a href="{% url coltrane_entry_archive_tag tag.name %}">{{ tag.name }}</a>
+                {% if forloop.last %}{% else %}
+                    {% ifequal forloop.revcounter0 1 %}and {% else %}, {% endifequal %}
+                {% endif %}
+            {% endfor %}
+        </p>
+    {% else %}
+        <p>This entry doesn't have any tags.</p>
+    {% endif %}
+{% endblock %}
