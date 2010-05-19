@@ -23,13 +23,16 @@
     {{ object.body_html|safe }}
 {% endblock %}
 
-{% block right-sidebara %}
+{% block right-sidebar %}
     <div class="sidebar-block">
         <h3>This Post's Tags</h3>
         {% load tagging_tags %}
         {% tags_for_object object as object_tags %}
+        <ul class="tag">
         {% for tag in object_tags %}
-            <a href="{% url coltrane_entry_archive_tag tag.name %}"><button>{{ tag.name }}</button></a>
+            <li>
+                <a href="{% url coltrane_entry_archive_tag tag.name %}">{{ tag.name }}</a>
+            </li>
         {% endfor %}
     </div>
     {{ block.super }}

@@ -15,7 +15,7 @@
                 {% for category in link_categories %}
                     {% if category.count %}
                         <li>
-                            <a href="{{ category.get_absolute_links_url }}" title="{{ category.title }}">{{ category.title }}</a> ({{ category.count }})
+                        <a href="{{ category.get_absolute_links_url }}" title="{{ category.title }}">{{ category.title }}</a> ({{ category.count }})
                         </li>
                     {% endif %}
                 {% endfor %}
@@ -25,8 +25,11 @@
         <h3>All Link Tags</h3>
         {% load tagging_tags %}
         {% tags_for_model coltrane.link as link_tags with counts %}
+        <ul class="tag">
         {% for tag in link_tags %}
-            <a href="{% url coltrane_link_archive_tag tag.name %}"><button>{{ tag.name }} ({{ tag.count }})</button></a>
+            <li>
+                <a href="{% url coltrane_link_archive_tag tag.name %}">{{ tag.name }}</a> x {{ tag.count }}
+            </li>
         {% endfor %}
     </div>
     <div class="sidebar-block">

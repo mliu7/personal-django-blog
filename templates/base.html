@@ -15,10 +15,10 @@
     <div class="header-container">
         <div class="container">
             <div id="header" class="span-24 last">
-                <div class="span-16">
+                <div class="span-17">
                     <h1 id="branding">Mark's Blog</h1>
                 </div>
-                <div class="span-8 last">
+                <div class="span-7 last">
                     <ul id="main-nav">
                         <li id="main-nav-entries"><a href="{% url coltrane_entry_archive_index %}">Blog</a></li>
                         <li id="main-nav-links"><a href="{% url coltrane_link_archive_index %}">Links</a></li>
@@ -29,11 +29,11 @@
         </div>
     </div>
     <div class="container">
-        <div id="content" class="span-16">
+        <div id="content" class="span-17">
             {% block content %}
             {% endblock %}
         </div>
-        <div id="right-sidebar" class="span-8 last">
+        <div id="right-sidebar" class="span-7 last">
             {% block right-sidebar %}
             {% endblock %}
         </div>

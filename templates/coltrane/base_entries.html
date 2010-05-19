@@ -25,9 +25,13 @@
         <h3>All Entry Tags</h3>
         {% load tagging_tags %}
         {% tags_for_model coltrane.entry as entry_tags with counts %}
+        <ul class="tag">
         {% for tag in entry_tags %}
-            <a href="{% url coltrane_entry_archive_tag tag.name %}"><button>{{ tag.name }} ({{ tag.count }})</button></a>
+            <li>
+                <a href="{% url coltrane_entry_archive_tag tag.name %}">{{ tag.name }}</a> x {{ tag.count }}
+            </li>
         {% endfor %}
+        </ul>
     </div>
     <div class="sidebar-block">
         <h3>Latest Entries</h3>
