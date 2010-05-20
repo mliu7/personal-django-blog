@@ -1,0 +1,12 @@
+# Ignore the settings file
+settings.py
+
+# Ignore the database
+*.db
+*.DS_Store
+
+# Ignore all generated .pyc files
+*.pyc
+
+# Ignore swap files
+*.swp
