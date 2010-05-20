@@ -35,6 +35,19 @@
         </div>
         <div id="right-sidebar" class="span-7 last">
             {% block right-sidebar %}
+            <div class="sidebar-block">
+                <h3>Recent Tweets</h3>
+                {% load coltrane_tags %}
+                {% load twitter_tags %}
+                {% get_twitter_messages user MarkWLiu limit 5 as tweets %}
+                <ul>
+                {% for tweet in tweets %}
+                    <li>
+                        <a href="{{ tweet.url }}">{{ tweet.text }}</a>
+                    </li>
+                {% endfor %}
+                </ul>
+            </div>
             {% endblock %}
         </div>
     </div>
