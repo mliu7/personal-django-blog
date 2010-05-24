@@ -14,6 +14,7 @@ urlpatterns = patterns('',
     (r'^media/(?P<path>.*)$', 'django.views.static.serve',
         {'document_root': settings.MEDIA_ROOT}),
     
+    (r'^about/', 'django.views.generic.simple.direct_to_template', {'template': 'about.html'}),
     (r'^categories/', include('coltrane.urls.categories')),
     (r'^links/', include('coltrane.urls.links')),
     (r'^tags/', include('coltrane.urls.tags')),
@@ -22,5 +23,6 @@ urlpatterns = patterns('',
 
     (r'', include('coltrane.urls.entries')),
                         
-    (r'', include('django.contrib.flatpages.urls')),
+
+    #(r'', include('django.contrib.flatpages.urls')),
 )
