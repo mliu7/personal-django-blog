@@ -11,7 +11,7 @@
         <h3>Categories</h3>
         {% load coltrane_tags %}
         {% categories_for_model coltrane.link as link_categories with counts %}
-            <ul>
+            <ul class="links">
                 {% for category in link_categories %}
                     {% if category.count %}
                         <li>
@@ -25,7 +25,7 @@
         <h3>All Link Tags</h3>
         {% load tagging_tags %}
         {% tags_for_model coltrane.link as link_tags with counts %}
-        <ul class="tag">
+        <ul class="tags">
         {% for tag in link_tags %}
             <li>
                 <a href="{% url coltrane_link_archive_tag tag.name %}">{{ tag.name }}</a> x {{ tag.count }}
@@ -36,7 +36,7 @@
         <h3>Latest Links</h3>
         {% load coltrane_tags %}
         {% get_latest_content coltrane.link 10 as latest_links %}
-        <ul>
+        <ul class="links">
             {% for link in latest_links %}
                 <li>
                     <a href="{{ link.get_absolute_url }}">{{ link.title }}</a>

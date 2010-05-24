@@ -28,7 +28,7 @@
         <h3>This Post's Tags</h3>
         {% load tagging_tags %}
         {% tags_for_object object as object_tags %}
-        <ul class="tag">
+        <ul class="tags">
         {% for tag in object_tags %}
             <li>
                 <a href="{% url coltrane_entry_archive_tag tag.name %}">{{ tag.name }}</a>

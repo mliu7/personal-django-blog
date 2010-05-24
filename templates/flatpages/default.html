@@ -1,9 +1,6 @@
-<html>
-<head>
-    <title>{{ flatpage.title }}</title>
-</head>
-<body>
-    <h1>{{ flatpage.title }}</h1>
+{% extends "base.html" %}
+
+{% block title %}{{ block.super }} | {{ flatpage.title }}{% endblock %}
+{% block content %}
     {{ flatpage.content }}
-</body>
-</html>
+{% endblock %}
