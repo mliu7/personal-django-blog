@@ -21,20 +21,10 @@
     </p>
 
     {{ object.body_html|safe }}
-    <!--
-    <script>
-    var idcomments_acct = '9bdf8809e25ee494bfafbf2feac6de30';
-    var idcomments_post_id;
-    var idcomments_post_url;
-    </script>
-    <span id="IDCommentsPostTitle" style="display:none"></span>
-    <script type='text/javascript' src='http://www.intensedebate.com/js/genericCommentWrapperV2.js'></script>
-    -->
 {% endblock %}
 
 {% block comments %}
     {% load disqus_tags %}
-    {% disqus_dev %}
     {% disqus_show_comments %}
 {% endblock %}
 
