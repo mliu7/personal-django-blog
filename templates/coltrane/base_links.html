@@ -22,17 +22,6 @@
             </ul>
     </div>
     <div class="sidebar-block">
-        <h3>All Link Tags</h3>
-        {% load tagging_tags %}
-        {% tags_for_model coltrane.link as link_tags with counts %}
-        <ul class="tags">
-        {% for tag in link_tags %}
-            <li>
-                <a href="{% url coltrane_link_archive_tag tag.name %}">{{ tag.name }}</a> x {{ tag.count }}
-            </li>
-        {% endfor %}
-    </div>
-    <div class="sidebar-block">
         <h3>Latest Links</h3>
         {% load coltrane_tags %}
         {% get_latest_content coltrane.link 10 as latest_links %}
@@ -43,5 +32,16 @@
                 </li>
             {% endfor %}
         </ul>
+    </div>
+    <div class="sidebar-block">
+        <h3>All Link Tags</h3>
+        {% load tagging_tags %}
+        {% tags_for_model coltrane.link as link_tags with counts %}
+        <ul class="tags">
+        {% for tag in link_tags %}
+            <li>
+                <a href="{% url coltrane_link_archive_tag tag.name %}">{{ tag.name }}</a> x {{ tag.count }}
+            </li>
+        {% endfor %}
     </div>
 {% endblock %}
