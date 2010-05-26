@@ -21,6 +21,17 @@
     </p>
 
     {{ object.body_html|safe }}
+    <script>
+    var idcomments_acct = '9bdf8809e25ee494bfafbf2feac6de30';
+    var idcomments_post_id;
+    var idcomments_post_url;
+    </script>
+    <span id="IDCommentsPostTitle" style="display:none"></span>
+    <script type='text/javascript' src='http://www.intensedebate.com/js/genericCommentWrapperV2.js'></script>
+
+    {% load disqus_tags %}
+    {% disqus_dev %}
+    {% disqus_show_comments %}
 {% endblock %}
 
 {% block right-sidebar %}
@@ -36,31 +47,4 @@
         {% endfor %}
     </div>
     {{ block.super }}
-{% endblock %}
-
-{% block whatis %}
-    {% if object.categories.count %}
-        <p>This entry is part of the categor{{ object.categories.count|pluralize:"y,ies" }}
-            {% for category in object.categories.all %}
-                <a href="{{ category.get_absolute_url }}">{{ category.title }}</a>
-                {% if forloop.last %}{% else %}
-                    {% ifequal forloop.revcounter0 1 %}and {% else %}, {% endifequal %}
-                {% endif %}
-            {% endfor %}
-    {% else %}
-        <p>This entry isn't part of any categories.</p>
-    {% endif %}
-    
-    {% if object.etags.count %}
-        <p>This entry is tagged with 
-            {% for tag in object.etags %}
-                <a href="{% url coltrane_entry_archive_tag tag.name %}">{{ tag.name }}</a>
-                {% if forloop.last %}{% else %}
-                    {% ifequal forloop.revcounter0 1 %}and {% else %}, {% endifequal %}
-                {% endif %}
-            {% endfor %}
-        </p>
-    {% else %}
-        <p>This entry doesn't have any tags.</p>
-    {% endif %}
 {% endblock %}

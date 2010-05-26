@@ -29,9 +29,11 @@
         </div>
     </div>
     <div class="container">
-        <div id="content" class="span-17">
-            {% block content %}
-            {% endblock %}
+        <div class="span-17">
+            <div id="content">
+                {% block content %}
+                {% endblock %}
+            </div>
         </div>
         <div id="right-sidebar" class="span-7 last">
             {% block right-sidebar %}
@@ -56,9 +58,16 @@
             <div id="footer-1" class="span-24 last">
                 <div class="footer-block span-8">
                     <h2>About Me</h2>
+                    <p>
+                    My name is Mark, and this is my blog. 
+                    I'm a student at UW-Madison and a recreational web developer.
+                    </p>
+                    <p>
+                    <a href="/about/">Read More</a>
+                    </p>
                 </div>
                 <div class="footer-block span-8">
-                    <h2>Follow Me</h2>
+                    <h2>Find Me Elsewhere</h2>
                     <ul class="links">
                         <li><a href="http://delicious.com/mliu7">Delicious</a></li>
                         <li><a href="http://www.facebook.com/mliu7">Facebook</a></li>
@@ -66,6 +75,9 @@
                         <li><a href="http://www.linkedin.com/in/markwliu">LinkedIn</a></li>
                         <li><a href="http://twitter.com/MarkWLiu">Twitter</a></li>
                     </ul>
+                </div>
+                <div class="footer-block span-8 last">
+                    <h2>About This Blog</h2>
                 </div>
             </div>
         </div>

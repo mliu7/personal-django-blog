@@ -1,6 +1,6 @@
 body {
-    background: url("/media/images/background.png") !important;
     font-size: 90% !important;
+  asdf  background: url("/media/images/background.png") !important;
 }
 
 .header-container {
@@ -24,6 +24,7 @@ body {
 #content {
     padding-top: 20px;
     padding-bottom: 20px;
+    padding-right: 20px;
 }
 
 #main-nav {
@@ -86,6 +87,20 @@ body {
         font-weight: bold;
         color: #8AC6F2;
     }
+
+    .footer-block a {
+        text-decoration: none;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        color: white;
+        padding: 2px;
+    }
+        .footer-block a:hover {
+            text-decoration: none;
+            color: #8AC6F2;
+            background-color: #656565;
+        }
+
     .footer-block ul, .sidebar-block ul {
         padding-left: 0px;
         padding-right: 0px;
@@ -142,9 +157,9 @@ body {
                 }
 .footer-block {
     color: white;
-    width = 320px;
-    float: left;
-    padding: 20px;
+asdf    width = 320px;
+ asdf   float: left;
+  asdf  padding: 20px;
     margin-top: 10px;
 }
 
@@ -167,3 +182,22 @@ body {
     background-color: #212121;
 }
 
+.dsq-options, #dsq-comments-title, .dsq-sub-header, .dsq-request-user-stats, .dsq-brlink, .dsq-like {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+.dsq-full-comment {
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    background-color: #D6D7D1 !important;
+}
+
+.dsq-comment-footer, .dsq-comment-message {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+}
+
+.dsq-comment-footer {
+    padding-bottom: 5px !important;
+}
