@@ -34,6 +34,10 @@
                 {% block content %}
                 {% endblock %}
             </div>
+            <div id="comments">
+                {% block comments %}
+                {% endblock %}
+            </div>
         </div>
         <div id="right-sidebar" class="span-7 last">
             {% block right-sidebar %}
@@ -59,7 +63,7 @@
                 <div class="footer-block span-8">
                     <h2>About Me</h2>
                     <p>
-                    My name is Mark, and this is my blog. 
+                    My name is Mark Liu, and this is my blog. 
                     I'm a student at UW-Madison and a recreational web developer.
                     </p>
                     <p>
@@ -78,6 +82,8 @@
                 </div>
                 <div class="footer-block span-8 last">
                     <h2>About This Blog</h2>
+                    This blog is written in <a href="http://www.python.org/" title="Python Programming Language">Python</a> and is using the <a href="http://www.djangoproject.com/" title="Django Web Development Framework">Django</a> web development framework.  
+                    It is being hosted by the people over at <a href="http://www.webfaction.com/" title="Webfaction Web Hosting">Webfaction</a>.
                 </div>
             </div>
         </div>
@@ -85,7 +91,7 @@
     <div class="footer-container-2">
         <div class="container">
             <div id="footer-2" class="span-24 last">
-                I will soon be releasing my code for this blog on github. 
+                I will soon be releasing my code for this blog.
             </div>
         </div>
     </div>

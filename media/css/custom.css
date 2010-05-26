@@ -3,6 +3,16 @@ body {
   asdf  background: url("/media/images/background.png") !important;
 }
 
+#content a {
+    text-decoration: none;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    background-color: #CEE5F6;
+    color: #3A362F;
+    padding: 2px;
+}
+
+
 .header-container {
     width: 100%;
     background-color: #3A362F;
@@ -83,24 +93,26 @@ body {
     -moz-border-radius: 6px;
     background-color: #3A362F;
 }
+    .sidebar-block ul.tags {
+    }
+        .sidebar-block ul.tags li {
+            margin-top: 10px;
+        }
+            .sidebar-block ul.tags li a {
+                font-weight: bold;
+                -webkit-border-radius: 3px;
+                -moz-border-radius: 3px;
+                margin: 5px;
+                padding: 5px;
+                border-style: solid;
+                border-color: #616D7E;
+                border-width: 1px;
+                background-color: #656565;
+            }
     .footer-block h2, .sidebar-block h3 {
         font-weight: bold;
         color: #8AC6F2;
     }
-
-    .footer-block a {
-        text-decoration: none;
-        -webkit-border-radius: 3px;
-        -moz-border-radius: 3px;
-        color: white;
-        padding: 2px;
-    }
-        .footer-block a:hover {
-            text-decoration: none;
-            color: #8AC6F2;
-            background-color: #656565;
-        }
-
     .footer-block ul, .sidebar-block ul {
         padding-left: 0px;
         padding-right: 0px;
@@ -124,7 +136,7 @@ body {
                 background-color: #656565;
                 color: #8AC6F2;
             }
-                .footer-block ul.links li:hover a, .sidebar-block ul.links li:hover a{
+                .footer-block ul.links li:hover a, .sidebar-block ul.links li:hover a, .sidebar-block ul.tags li a:hover{
                     color: #8AC6F2;
                 }
             .footer-block ul li a, .sidebar-block ul li a {
@@ -136,33 +148,23 @@ body {
                 .footer-block ul li a:hover, .sidebar-block ul li a:hover {
                     text-decoration: none;
                 }
-    .sidebar-block ul.tags {
-    }
-        .sidebar-block ul.tags li {
-            margin-top: 20px;
-        }
-            .sidebar-block ul.tags li a {
-                font-weight: bold;
-                -webkit-border-radius: 3px;
-                -moz-border-radius: 3px;
-                margin: 5px;
-                padding: 7px;
-                border-style: solid;
-                border-color: #616D7E;
-                border-width: 1px;
-                background-color: #656565;
-            }
-                .sidebar-block ul.tags li a:hover {
-                    background-color:#6D7B8D;
-                }
 .footer-block {
     color: white;
-asdf    width = 320px;
- asdf   float: left;
-  asdf  padding: 20px;
     margin-top: 10px;
 }
-
+    .footer-block a {
+        text-decoration: none;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        color: #9DCDF2;
+        padding: 2px;
+    }
+        #content a:hover, .footer-block a:hover {
+            text-decoration: none;
+            color: #8AC6F2;
+            background-color: #656565;
+            padding: 2px;
+        }
 .footer-container-1, .footer-container-2 {
     color: #FFFFFF;
     width: 100%;
@@ -180,6 +182,7 @@ asdf    width = 320px;
 .footer-container-2 {
     padding-bottom: 80px;
     background-color: #212121;
+    text-align: center;
 }
 
 .dsq-options, #dsq-comments-title, .dsq-sub-header, .dsq-request-user-stats, .dsq-brlink, .dsq-like {
