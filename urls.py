@@ -19,10 +19,9 @@ urlpatterns = patterns('',
     (r'^links/', include('coltrane.urls.links')),
     (r'^tags/', include('coltrane.urls.tags')),
     
-    #(r'^weblog/feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed', { 'feed_dict': feeds }),
+    (r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed', { 'feed_dict': feeds }),
 
     (r'', include('coltrane.urls.entries')),
-                        
 
     #(r'', include('django.contrib.flatpages.urls')),
 )
