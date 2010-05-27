@@ -5,7 +5,7 @@ admin.autodiscover()
 
 from coltrane.feeds import CategoryFeed, LatestEntriesFeed
 
-feeds = { 'entries': LatestEntriesFeed,
+feeds = { 'latest': LatestEntriesFeed,
           'categories': CategoryFeed }
 
 urlpatterns = patterns('',
@@ -20,6 +20,8 @@ urlpatterns = patterns('',
     (r'^tags/', include('coltrane.urls.tags')),
     
     (r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed', { 'feed_dict': feeds }),
+    # Need to upgrade to django 1.2 to use the following line:
+    #(r'^feeds/latest/$', 'django.contrib.syndication.views.feed', LatestEntriesFeed()),
 
     (r'', include('coltrane.urls.entries')),
 
