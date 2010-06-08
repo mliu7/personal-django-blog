@@ -11,10 +11,6 @@ REMOTE_PROJECT_PATH = '/home/mliu/webapps/django/'
 env.roledefs = {
     'web': ['markliu.me']
 }
-#set(fab_user='mark', 
-#    fab_hosts=['markliu.me'],
-#    root=LOCAL_PROJECT_DIR,
-#    site='markliu')
 
 class App:
     def __init__(self, name, local_path=LOCAL_PROJECT_PATH, remote_path=REMOTE_PROJECT_PATH, remote_backup_dir=REMOTE_BACKUP_DIR):
@@ -32,11 +28,6 @@ class App:
         month = now.month
         year = now.year
         return basename + '_' + str(year) + '_' + str(month) + '_' + str(day) + '_' + str(hour) + '-' + str(minute) + extension
-
-    #def remote_backup(self):
-    #    pdb.set_trace()
-    #    run('cd ' + self.remote_path + self.name + ';tar -cvzf ' + self._remote_backup_name(basename=self.name) + ' .; \
-    #       mv ' + self._remote_backup_name(basename=self.name) + ' ' + self.remote_backup_dir) #backup old one
 
     def _remote_delete(self):
         run('rm -r ' + self.remote_path + self.name)
@@ -74,13 +65,14 @@ class MainApp(App):
     def upload_settings(self):
         put(self.local_path + self.name + '/settings.py', self.remote_path + self.name + '/settings.py')
     def move_media(self):
-        run('cd ' + self.remote_path + '; \
+        run('cd ' + self.remote_path + self.name + '; \
             tar cvzf media.tar.gz media; \
             mv media.tar.gz ' + self.remote_backup_dir + self._remote_backup_name(basename='media') + '; \
             cp -a media /home/mliu/webapps/; \
             rm -r media')
     def sync_virtualenv(self):
-        run('pip install -E markliu -r ' + self.remote_path + self.name + '/requirements.txt')
+        run('source ~/python-environments/markliu/bin/activate; \
+            pip install -r ' + self.remote_path + self.name + '/requirements.txt')
 
     def deploy(self):
         self.replace_remote()
@@ -110,16 +102,3 @@ def deploy():
     django_twitter_tags.deploy()
 
     restart_webserver() 
-
-
-
-    #_backup_dir(REMOTE_PROJECT_DIR, REMOTE_BACKUP_DIR, REMOTE_PROJECT_NAME)
-
-    #local('cd ' + LOCAL_PROJECT_DIR + ';git archive --format=tar HEAD | gzip > ' + LOCAL_PROJECT_NAME + '.tar.gz')
-    #run('rm -r ' + dir) #remove the old one
-    #put(LOCAL_PROJECT_DIR + LOCAL_PROJECT_NAME + '.tar.gz', REMOTE_PROJECT_DIR +  REMOTE_PROJECT_NAME + '.tar.gz') #put the new one
-    #run('cd ' + REMOTE_PROJECT_DIR + '; tar -xzf ' + REMOTE_PROJECT_NAME + '.tar.gz') #unzip it
-    #run('cd ' + REMOTE_PROJECT_DIR + '; rm ' + REMOTE_PROJECT_NAME + '.tar.gz') #remove it
-    
-    #move the media appropriately
-    #restart
