@@ -63,9 +63,9 @@ class App:
 
 class MainApp(App):
     def upload_settings(self):
-        put(self.local_path + self.name + '/settings.py', self.remote_path + self.name + '/settings.py')
+        put(self.local_path + self.name + '/markliu/settings.py', self.remote_path + self.name + '/markliu/settings.py')
     def move_media(self):
-        run('cd ' + self.remote_path + self.name + '; \
+        run('cd ' + self.remote_path + self.name + '/markliu; \
             tar cvzf media.tar.gz media; \
             mv media.tar.gz ' + self.remote_backup_dir + self._remote_backup_name(basename='media') + '; \
             cp -a media /home/mliu/webapps/; \
@@ -96,9 +96,9 @@ def error_log():
 def deploy():
     markliu = MainApp('markliu')
     markliu.deploy()
-    coltrane = App('coltrane')
+    coltrane = App('coltrane-blog')
     coltrane.deploy()
-    django_twitter_tags = App('django_twitter_tags')
+    django_twitter_tags = App('django-twitter-tags')
     django_twitter_tags.deploy()
 
     restart_webserver() 

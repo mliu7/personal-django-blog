@@ -3,6 +3,14 @@ body {
   asdf  background: url("/media/images/background.png") !important;
 }
 
+pre {
+    background:#EEEEEE; 
+    font-family: Trebuchet MS; 
+    display:block; 
+    border:1px solid #999999 !important; 
+    padding:10px !important;
+}
+
 #content a {
     text-decoration: none;
     -webkit-border-radius: 3px;
