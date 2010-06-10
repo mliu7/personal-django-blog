@@ -72,13 +72,21 @@ class MainApp(App):
             rm -r media')
     def sync_virtualenv(self):
         run('source ~/python-environments/markliu/bin/activate; \
-            pip install -r ' + self.remote_path + self.name + '/requirements.txt')
+            pip install -r ' + self.remote_path + self.name + '/requirements.txt; \
+            add2virtualenv ' + self.remote_path + 'django-google-webmaster; \
+            add2virtualenv ' + self.remote_path + 'django-twitter-tags; \
+            add2virtualenv ' + self.remote_path + 'coltrane-blog')
+
 
     def deploy(self):
         self.replace_remote()
         self.upload_settings()
         self.move_media()
-        self.sync_virtualenv()
+
+def add_virtual_env():
+    run('source ~/python-environments/markliu/bin/activate; \
+        add2virtualenv /home/mliu/webapps/django/django-google-webmaster/google_webmaster')
+
 
 def production():
     env.hosts = env.roledefs['web']
@@ -95,10 +103,13 @@ def error_log():
 
 def deploy():
     markliu = MainApp('markliu')
-    markliu.deploy()
-    coltrane = App('coltrane-blog')
-    coltrane.deploy()
-    django_twitter_tags = App('django-twitter-tags')
-    django_twitter_tags.deploy()
+    #markliu.deploy()
+    #coltrane = App('coltrane-blog')
+    #coltrane.deploy()
+    #django_twitter_tags = App('django-twitter-tags')
+    #django_twitter_tags.deploy()
+    #django_google_webmaster = App('django-google-webmaster')
+    #django_google_webmaster.deploy()
 
+    markliu.sync_virtualenv()
     restart_webserver() 
