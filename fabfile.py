@@ -83,9 +83,9 @@ class MainApp(App):
         self.upload_settings()
         self.move_media()
 
-def add_virtual_env():
-    run('source ~/python-environments/markliu/bin/activate; \
-        add2virtualenv /home/mliu/webapps/django/django-google-webmaster/google_webmaster')
+#def add_virtual_env():
+#    run('source ~/python-environments/markliu/bin/activate; \
+#        add2virtualenv /home/mliu/webapps/django/django-google-webmaster/google_webmaster')
 
 
 def production():
@@ -103,13 +103,13 @@ def error_log():
 
 def deploy():
     markliu = MainApp('markliu')
-    #markliu.deploy()
-    #coltrane = App('coltrane-blog')
-    #coltrane.deploy()
-    #django_twitter_tags = App('django-twitter-tags')
-    #django_twitter_tags.deploy()
-    #django_google_webmaster = App('django-google-webmaster')
-    #django_google_webmaster.deploy()
+    markliu.deploy()
+    coltrane = App('coltrane-blog')
+    coltrane.deploy()
+    django_twitter_tags = App('django-twitter-tags')
+    django_twitter_tags.deploy()
+    django_google_webmaster = App('django-google-webmaster')
+    django_google_webmaster.deploy()
 
     markliu.sync_virtualenv()
     restart_webserver() 
