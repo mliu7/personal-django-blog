@@ -64,12 +64,14 @@ class App:
 class MainApp(App):
     def upload_settings(self):
         put(self.local_path + self.name + '/markliu/settings.py', self.remote_path + self.name + '/markliu/settings.py')
+
     def move_media(self):
         run('cd ' + self.remote_path + self.name + '/markliu; \
             tar cvzf media.tar.gz media; \
             mv media.tar.gz ' + self.remote_backup_dir + self._remote_backup_name(basename='media') + '; \
             cp -a media /home/mliu/webapps/; \
             rm -r media')
+
     def sync_virtualenv(self):
         run('source ~/python-environments/markliu/bin/activate; \
             pip install -r ' + self.remote_path + self.name + '/requirements.txt; \
@@ -77,16 +79,10 @@ class MainApp(App):
             add2virtualenv ' + self.remote_path + 'django-twitter-tags; \
             add2virtualenv ' + self.remote_path + 'coltrane-blog')
 
-
     def deploy(self):
         self.replace_remote()
         self.upload_settings()
         self.move_media()
-
-#def add_virtual_env():
-#    run('source ~/python-environments/markliu/bin/activate; \
-#        add2virtualenv /home/mliu/webapps/django/django-google-webmaster/google_webmaster')
-
 
 def production():
     env.hosts = env.roledefs['web']
