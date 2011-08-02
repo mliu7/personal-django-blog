@@ -54,6 +54,10 @@ h3,h4,h5,h6 {
     color: #FFFFFF
 }
 
+.grey-text {
+    color: #36424A;
+}
+
 .light-grey-text {
     color: #CCCCCC;
 }
