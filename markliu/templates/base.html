@@ -5,9 +5,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>{% block title %}Mark's Blog{% endblock %}</title>
 
-    <link rel="stylesheet" href="/media/css/custom.css" type="text/css" media="screen, projection">	
     <link rel="stylesheet" href="/media/css/blueprint/screen.css" type="text/css" media="screen, projection">
     <link rel="stylesheet" href="/media/css/blueprint/print.css" type="text/css" media="print">	
+    <link rel="stylesheet" href="/media/css/custom.css" type="text/css" media="screen, projection">	
     <!--[if lt IE 8]><link rel="stylesheet" href="/media/css/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
     <link rel="alternate" type="application/atom+xml" title="Latest Entries" href="/feeds/latest/" />
     {% load google_webmaster_tags %}
@@ -31,13 +31,12 @@
         <div class="container">
             <div id="header" class="span-24 last">
                 <div class="span-17">
-                    <h1 id="branding">Mark's Blog</h1>
+                    <h1 id="branding">Mark Liu</h1> <div class="light-grey-text">Co-founder of Leaguevine</div>
                 </div>
                 <div class="span-7 last">
                     <ul id="main-nav">
-                        <li id="main-nav-entries"><a href="{% url coltrane_entry_archive_index %}">Blog</a></li>
-                        <li id="main-nav-links"><a href="{% url coltrane_link_archive_index %}">Links</a></li>
-                        <li id="main-nav-about"><a href="/about/">About Me</a></li>
+                        <li id="main-nav-entries" {% if not is_about %}class="selected"{% endif %}><a href="{% url coltrane_entry_archive_index %}">Blog</a></li>
+                        <li id="main-nav-about" {% if is_about %}class="selected"{% endif %}><a href="/about/">About</a></li>
                     </ul>
                 </div>
             </div>
@@ -64,10 +63,11 @@
                 <ul class="links">
                 {% for tweet in tweets %}
                     <li>
-                        <a href="{{ tweet.url }}">{{ tweet.text }}</a>
+                    <div class="quote"><img height="15px" src="/media/images/quotes.jpg"></div> <div class="tweet"><a href="{{ tweet.url }}">{{ tweet.text }}</a></div>
                     </li>
                 {% endfor %}
                 </ul>
+                &nbsp;
             </div>
             {% endblock %}
         </div>
@@ -75,33 +75,31 @@
     <div class="footer-container-1">
         <div class="container">
             <div id="footer-1" class="span-24 last">
-                <div class="footer-block span-12">
+                <div class="footer-block span-7">
+                    <h2>Thanks for visiting!</h2>
+                    <div class="image-block"><img src="/media/images/mark_liu_with_kids.jpg" alt="Profile Picture" /></div>
+                </div>
+
+                <div class="span-1">&nbsp;</div>
+                <div class="footer-block span-7">
                     <h2>About This Site</h2>
                     <p>This blog is written in <a href="http://www.python.org/" title="Python Programming Language">Python</a> and is using the <a href="http://www.djangoproject.com/" title="Django Web Development Framework">Django</a> web development framework.  
                     It is being hosted by the people over at <a href="http://www.webfaction.com/" title="Webfaction Web Hosting">Webfaction</a>.</p>
                     <p>You are free to use and modify both the content on this blog and the <a href="http://github.com/mliu7/personal-django-blog">source code</a> behind it.</p>
-                    <p>It is written by <a href="http://markliu.me/about/">Mark Liu</a>, a student at UW-Madison.</p>
+                    <p>It was built by <a href="/about/">Mark Liu</a>, founder of <a href="http://leaguevine.com">Leaguevine</a>.</p>
                 </div>
-                <div class="footer-block span-12 last">
-                    <h2>Find Me Elsewhere</h2>
+                <div class="span-1">&nbsp;</div>
+                <div class="footer-block span-8 last">
+                    <h2>Follow Me</h2>
                     <ul class="links">
-                        <li><a href="http://delicious.com/mliu7">Delicious</a></li>
-                        <li><a href="http://www.facebook.com/mliu7">Facebook</a></li>
-                        <li><a href="http://github.com/mliu7">Github</a></li>
-                        <li><a href="http://www.linkedin.com/in/markwliu">LinkedIn</a></li>
-                        <li><a href="http://twitter.com/MarkWLiu">Twitter</a></li>
+                        <li><img height="30px" src="/media/images/facebook_logo.png"><a href="http://www.facebook.com/mliu7">Facebook</a></li>
+                        <li><img height="30px" src="/media/images/twitter_logo.png"><a href="http://twitter.com/MarkWLiu">Twitter</a></li>
+                        <li><img height="30px" src="/media/images/linkedin_logo.png"><a href="http://www.linkedin.com/in/markwliu">LinkedIn</a></li>
+                        <li><img height="30px" src="/media/images/github_logo.png"><a href="http://github.com/mliu7">Github</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
-    <!--
-    <div class="footer-container-2">
-        <div class="container">
-            <div id="footer-2" class="span-24 last">
-            </div>
-        </div>
-    </div>
-    -->
 </body>
 </html>

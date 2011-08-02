@@ -2,13 +2,8 @@
 
 {% block content %}
     {% for entry in object_list %}
-        <h2>{{ entry.title }}</h2>
-        <p>Published on {{ entry.pub_date|date:"F j, Y" }}</p>
-        {% if entry.excerpt_html %}
-            {{ entry.excerpt_html|safe }}
-        {% else %}
-            {{ entry.body_html|truncatewords_html:"50"|safe }}
-        {% endif %}
-        <p><a href="{{ entry.get_absolute_url }}">Read full entry</a></p>
+    <h2><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></h2>
+        <div class="date-published">{{ entry.pub_date|date:"F j, Y" }}</div>
+        {{ entry.body_html|safe }}
     {% endfor %}
 {% endblock %}

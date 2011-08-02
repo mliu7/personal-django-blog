@@ -1,13 +1,12 @@
+python-twitter
 Django==1.2.1
 Markdown==2.0.3
 South==0.7.1
-distribute==0.6.10
 django-debug-toolbar==0.8.3
 django-disqus==0.3.2
 django-tagging==0.3.1
 feedparser==4.1
 http://pydelicious.googlecode.com/svn/trunk/
-python-twitter==0.6
 simplejson==2.1.1
 wsgiref==0.1.2
 yolk==0.4.1

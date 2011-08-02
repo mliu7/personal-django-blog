@@ -10,3 +10,7 @@ settings.py
 
 # Ignore swap files
 *.swp
+*.swo
+
+# Ignore whatever these are
+*._*

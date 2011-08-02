@@ -8,7 +8,8 @@
 
 {% block content %}
     <h2>{{ object.title }}</h2>
-    <p>Published on {{ object.pub_date|date:"F j, Y" }}.
+    <div class="date-published">{{ object.pub_date|date:"F j, Y" }}</div>
+    <!--
         {% if object.categories.count %}
             Under 
             {% for category in object.categories.all %}
@@ -18,7 +19,7 @@
                 {% endif %}
             {% endfor %}
         {% endif %} 
-    </p>
+    -->
 
     {{ object.body_html|safe }}
 {% endblock %}
