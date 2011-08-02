@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block content %}
-    <h2>{{ object.title }}</h2>
+    <h1>{{ object.title }}</h1>
     <div class="date-published">{{ object.pub_date|date:"F j, Y" }}</div>
     <!--
         {% if object.categories.count %}

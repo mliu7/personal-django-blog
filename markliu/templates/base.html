@@ -43,7 +43,7 @@
         </div>
     </div>
     <div class="container">
-        <div class="span-17">
+        <div class="span-16">
             <div id="content">
                 {% block content %}
                 {% endblock %}
@@ -53,13 +53,14 @@
                 {% endblock %}
             </div>
         </div>
+        <div class="span-1">&nbsp;</div>
         <div id="right-sidebar" class="span-7 last">
             {% block right-sidebar %}
             <div class="sidebar-block">
                 <h3>Recent Tweets</h3>
                 {% load coltrane_tags %}
                 {% load twitter_tags %}
-                {% get_twitter_messages user MarkWLiu limit 5 as tweets %}
+                {% get_twitter_messages user MarkWLiu limit 7 as tweets %}
                 <ul class="links">
                 {% for tweet in tweets %}
                     <li>
@@ -81,7 +82,7 @@
                 </div>
 
                 <div class="span-1">&nbsp;</div>
-                <div class="footer-block span-7">
+                <div class="footer-block span-8">
                     <h2>About This Site</h2>
                     <p>This blog is written in <a href="http://www.python.org/" title="Python Programming Language">Python</a> and is using the <a href="http://www.djangoproject.com/" title="Django Web Development Framework">Django</a> web development framework.  
                     It is being hosted by the people over at <a href="http://www.webfaction.com/" title="Webfaction Web Hosting">Webfaction</a>.</p>
@@ -89,7 +90,7 @@
                     <p>It was built by <a href="/about/">Mark Liu</a>, founder of <a href="http://leaguevine.com">Leaguevine</a>.</p>
                 </div>
                 <div class="span-1">&nbsp;</div>
-                <div class="footer-block span-8 last">
+                <div class="footer-block span-7 last">
                     <h2>Follow Me</h2>
                     <ul class="links">
                         <li><img height="30px" src="/media/images/facebook_logo.png"><a href="http://www.facebook.com/mliu7">Facebook</a></li>

@@ -2,7 +2,7 @@
 
 {% block content %}
     {% for entry in object_list %}
-    <h2><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></h2>
+    <h1><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></h1>
         <div class="date-published">{{ entry.pub_date|date:"F j, Y" }}</div>
         {{ entry.body_html|safe }}
     {% endfor %}

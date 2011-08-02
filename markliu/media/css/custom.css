@@ -14,17 +14,22 @@ body {
 }
 
 h1 {
-    font-size: 32pt !important;
+    font-size: 22pt;
+}
+
+#branding {
+    font-size: 30pt;
+    margin-bottom: 0px;
 }
 
 h2 {
-    font-size: 24pt !important;
+    font-size: 16pt;
 }
 
 h1, h2, h1 a, h2 a {
-    color: #EE3224 !important;
-    font-family: Verdana, Arial, !important;
-    margin-bottom: 0px !important;
+    color: #EE3224;
+    font-family: Verdana, Arial;
+    margin-bottom: 10px;
 }
 
 h3,h4,h5,h6 {

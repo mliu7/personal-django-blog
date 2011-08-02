@@ -3,7 +3,7 @@ from fabric.api import env, run, local, put
 import datetime
 import pdb
 
-LOCAL_PROJECT_PATH = '/Users/mliu/Programming/djcode/'
+LOCAL_PROJECT_PATH = '/Volumes/DATA/Programming/djcode/'
 
 REMOTE_BACKUP_DIR = '/home/mliu/webapps/django/backups/'
 REMOTE_PROJECT_PATH = '/home/mliu/webapps/django/'
