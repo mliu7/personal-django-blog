@@ -6,6 +6,39 @@
 <link rel="stylesheet" href="{{ MEDIA_URL }}/css/blueprint/plugins/buttons/screen.css" type="text/css" media="screen, projection">
 {% endblock %}
 
+{% block extra-js %}{{ block.super }}
+    <script type="text/javascript">
+        var latest_entries_items_per_page = 7;
+        function pageselectLatestEntriesCallback(page_index, jq){
+            var start_index = page_index*latest_entries_items_per_page;
+            var end_index = start_index + latest_entries_items_per_page;
+            var new_content = jQuery('#latest_entries li.entry').slice(start_index,end_index).clone(); 
+            $('#latest_entries_result').empty();
+            for(var i=0;i<new_content.length;i++) {
+                $('#latest_entries_result').append(new_content[i]);
+            }
+            return false;
+        }
+        /** 
+         * Initialisation function for pagination
+         */
+        function initLatestEntriesPagination() {
+            // count entries inside the hidden content
+            var num_entries = jQuery('#latest_entries li.entry').length;
+            // Create content inside pagination element
+            $("#latest_entries_pagination").pagination(num_entries, {
+                items_per_page: latest_entries_items_per_page, // Show only one item per page
+                callback: pageselectLatestEntriesCallback
+            });
+         }
+        // When document is ready, initialize pagination
+        $(document).ready(function(){      
+            initLatestEntriesPagination();
+            $("#latest_entries_pagination").trigger('setPage', [0]);
+        });
+    </script>
+{% endblock %}
+
 {% block right-sidebar %}{{ block.super }} 
     <div class="sidebar-block">
         <h3>Categories</h3>
@@ -23,15 +56,18 @@
     </div>
     <div class="sidebar-block">
         <h3>Latest Entries</h3>
+        <ul id="latest_entries_result"></ul>
         {% load coltrane_tags %}
         {% get_latest_content coltrane.entry 10 as latest_entries %}
-        <ul class="links">
+        <ul id="latest_entries" class="links" style="display:none;">
             {% for entry in latest_entries %}
-                <li>
+                <li class="entry">
                     <a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a>
                 </li>
             {% endfor %}
+            </div>
         </ul>
+        <div id="latest_entries_pagination"></div>
     </div>
     <!--
     <div class="sidebar-block">

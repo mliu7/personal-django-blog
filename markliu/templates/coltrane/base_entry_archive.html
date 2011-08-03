@@ -5,8 +5,6 @@
 {% endblock %}
 
 {% block extra-js %}{{ block.super }}
-    <script type="text/javascript" src="/media/js/jquery-1.6.2.min.js"></script>
-    <script type="text/javascript" src="/media/js/jquery.pagination.js"></script>
     <script type="text/javascript">
         var items_per_page = 7;
         function pageselectCallback(page_index, jq){
@@ -64,5 +62,4 @@
         {% endfor %}
     </div>
     <div id="Pagination"></div>
-    <br style="clear:both;" />
 {% endblock %}
