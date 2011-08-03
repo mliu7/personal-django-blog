@@ -8,19 +8,10 @@
     <script type="text/javascript" src="/media/js/jquery-1.6.2.min.js"></script>
     <script type="text/javascript" src="/media/js/jquery.pagination.js"></script>
     <script type="text/javascript">
-        /**
-         * Callback function that displays the content.
-         *
-         * Gets called every time the user clicks on a pagination link.
-         *
-         * @param {int} page_index New Page index
-         * @param {jQuery} jq the container with the pagination links as a jQuery object
-         */
         var items_per_page = 3;
         function pageselectCallback(page_index, jq){
             var start_index = page_index*items_per_page;
             var end_index = start_index + items_per_page;
-/*            var new_content = jQuery('#entries div.entry:gte('+start_index+'):lt('+end_index+')').clone(); */
             var new_content = jQuery('#entries div.entry').slice(start_index,end_index).clone(); 
             $('#Searchresult').empty();
             for(var i=0;i<new_content.length;i++) {
@@ -28,7 +19,6 @@
             }
             return false;
         }
-       
         /** 
          * Initialisation function for pagination
          */
@@ -41,14 +31,12 @@
                 callback: pageselectCallback
             });
          }
-        
         // When document is ready, initialize pagination
         $(document).ready(function(){      
             initPagination();
             $("#Pagination").trigger('setPage', [0]);
         });
     </script>
-
 {% endblock %}
 
 {% block content %}
