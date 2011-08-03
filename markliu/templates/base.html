@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/media/css/blueprint/print.css" type="text/css" media="print">	
     <link rel="stylesheet" href="/media/css/custom.css" type="text/css" media="screen, projection">	
     <!--[if lt IE 8]><link rel="stylesheet" href="/media/css/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
+    {% block extra-js %}{% endblock %}
     <link rel="alternate" type="application/atom+xml" title="Latest Entries" href="/feeds/latest/" />
     {% load google_webmaster_tags %}
     {% webmaster_meta_tag %}

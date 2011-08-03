@@ -1,23 +1,80 @@
 {% extends "coltrane/base_entries.html" %}
 
-{% block content %}
-    {% for entry in object_list %}
-    <div>
-    <h1><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></h1>
-        <div class="date-published">{{ entry.pub_date|date:"F j, Y" }}</div>
-        {{ entry.body_html|safe }}
+{% block extra-css %}{{ block.super }}
+    <link rel="stylesheet" href="/media/css/pagination.css" type="text/css" media="screen, projection">	
+{% endblock %}
 
-        <h4><a href="{{ entry.get_absolute_url }}#disqus_thread"  class="grey-text">{{ entry.title }}</a></h4>
-        <script type="text/javascript">
-            var disqus_shortname = 'markliusblog'; 
-            (function () {
-                var s = document.createElement('script'); s.async = true;
-                s.type = 'text/javascript';
-                s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-                (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-            }());
-        </script>
+{% block extra-js %}{{ block.super }}
+    <script type="text/javascript" src="/media/js/jquery-1.6.2.min.js"></script>
+    <script type="text/javascript" src="/media/js/jquery.pagination.js"></script>
+    <script type="text/javascript">
+        /**
+         * Callback function that displays the content.
+         *
+         * Gets called every time the user clicks on a pagination link.
+         *
+         * @param {int} page_index New Page index
+         * @param {jQuery} jq the container with the pagination links as a jQuery object
+         */
+        var items_per_page = 3;
+        function pageselectCallback(page_index, jq){
+            var start_index = page_index*items_per_page;
+            var end_index = start_index + items_per_page;
+/*            var new_content = jQuery('#entries div.entry:gte('+start_index+'):lt('+end_index+')').clone(); */
+            var new_content = jQuery('#entries div.entry').slice(start_index,end_index).clone(); 
+            $('#Searchresult').empty();
+            for(var i=0;i<new_content.length;i++) {
+                $('#Searchresult').append(new_content[i]);
+            }
+            return false;
+        }
+       
+        /** 
+         * Initialisation function for pagination
+         */
+        function initPagination() {
+            // count entries inside the hidden content
+            var num_entries = jQuery('#entries div.entry').length;
+            // Create content inside pagination element
+            $("#Pagination").pagination(num_entries, {
+                items_per_page: items_per_page, // Show only one item per page
+                callback: pageselectCallback
+            });
+         }
         
+        // When document is ready, initialize pagination
+        $(document).ready(function(){      
+            initPagination();
+            $("#Pagination").trigger('setPage', [0]);
+        });
+    </script>
+
+{% endblock %}
+
+{% block content %}
+    <div id="Searchresult">
     </div>
-    {% endfor %}
+    <div id="entries" style="display:none;">
+        {% for entry in object_list %}
+        <div class="entry">
+            <h1><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></h1>
+            <div class="date-published">{{ entry.pub_date|date:"F j, Y" }}</div>
+            {{ entry.body_html|safe }}
+
+            <h4><a href="{{ entry.get_absolute_url }}#disqus_thread"  class="grey-text">View Comments</a></h4>
+            <script type="text/javascript">
+                var disqus_shortname = 'markliusblog'; 
+                (function () {
+                    var s = document.createElement('script'); s.async = true;
+                    s.type = 'text/javascript';
+                    s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+                    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+                }());
+            </script>
+            
+        </div>
+        {% endfor %}
+    </div>
+    <div id="Pagination"></div>
+    <br style="clear:both;" />
 {% endblock %}
