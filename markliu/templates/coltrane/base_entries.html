@@ -8,7 +8,7 @@
 
 {% block extra-js %}{{ block.super }}
     <script type="text/javascript">
-        var latest_entries_items_per_page = 7;
+        var latest_entries_items_per_page = 12;
         function pageselectLatestEntriesCallback(page_index, jq){
             var start_index = page_index*latest_entries_items_per_page;
             var end_index = start_index + latest_entries_items_per_page;
@@ -24,9 +24,9 @@
          */
         function initLatestEntriesPagination() {
             // count entries inside the hidden content
-            var num_entries = jQuery('#latest_entries li.entry').length;
+            var num_latest_entries = jQuery('#latest_entries li.entry').length;
             // Create content inside pagination element
-            $("#latest_entries_pagination").pagination(num_entries, {
+            $("#latest_entries_pagination").pagination(num_latest_entries, {
                 items_per_page: latest_entries_items_per_page, // Show only one item per page
                 callback: pageselectLatestEntriesCallback
             });

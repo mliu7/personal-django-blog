@@ -42,18 +42,7 @@
             <h1><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></h1>
             <div class="date-published">{{ entry.pub_date|date:"F j, Y" }}</div>
             {{ entry.body_html|safe }}
-
-            <h4><a href="{{ entry.get_absolute_url }}#disqus_thread"  class="grey-text">View Comments</a></h4>
-            <script type="text/javascript">
-                var disqus_shortname = 'markliusblog'; 
-                (function () {
-                    var s = document.createElement('script'); s.async = true;
-                    s.type = 'text/javascript';
-                    s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-                    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-                }());
-            </script>
-            
+            <h4><a href="{{ entry.get_absolute_url }}"  class="grey-text">View Comments</a></h4>
         </div>
         {% endfor %}
     </div>

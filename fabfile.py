@@ -77,6 +77,7 @@ class MainApp(App):
             pip install -r ' + self.remote_path + self.name + '/requirements.txt; \
             add2virtualenv ' + self.remote_path + 'django-google-webmaster; \
             add2virtualenv ' + self.remote_path + 'django-twitter-tags; \
+            add2virtualenv ' + self.remote_path + 'django-posterous; \
             add2virtualenv ' + self.remote_path + 'coltrane-blog')
 
     def deploy(self):
@@ -106,6 +107,8 @@ def deploy():
     django_twitter_tags.deploy()
     django_google_webmaster = App('django-google-webmaster')
     django_google_webmaster.deploy()
+    django_posterous = App('django-posterous')
+    django_posterous.deploy()
 
     markliu.sync_virtualenv()
     restart_webserver() 
