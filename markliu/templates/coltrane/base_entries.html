@@ -56,6 +56,7 @@
     </div>
     <div class="sidebar-block">
         <h3>Latest Entries</h3>
+        <div id="latest_entries_pagination"></div>
         <ul id="latest_entries_result"></ul>
         {% load coltrane_tags %}
         {% get_latest_content coltrane.entry 10 as latest_entries %}
@@ -67,7 +68,6 @@
             {% endfor %}
             </div>
         </ul>
-        <div id="latest_entries_pagination"></div>
     </div>
     <!--
     <div class="sidebar-block">

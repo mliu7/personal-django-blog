@@ -4,8 +4,8 @@
         
 .pagination a {
     text-decoration: none;
-	border: solid 1px #AAE;
-	color: #15B;
+	border: solid 1px #60605B;
+	color: #EE3224;
 }
 
 .pagination a, .pagination span {
@@ -19,9 +19,9 @@
 }
 
 .pagination .current {
-    background: #26B;
+    background: #EE3224;
     color: #fff;
-	border: solid 1px #AAE;
+	border: solid 1px #60605B;
 }
 
 .pagination .current.prev, .pagination .current.next{
