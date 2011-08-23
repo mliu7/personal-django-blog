@@ -11,6 +11,7 @@
 body {
     font-size: 16px;
     background: none repeat scroll 0 0 #FFFFFF;
+    word-wrap: break-word;
 }
 
 h1 {
