@@ -5,8 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>{% block title %}Mark's Blog{% endblock %}</title>
 
-    <link rel="stylesheet" href="/media/css/blueprint/screen.css" type="text/css" media="screen, projection">
-    <link rel="stylesheet" href="/media/css/blueprint/print.css" type="text/css" media="print">	
+    <link rel="stylesheet" href="/media/css/style.css" type="text/css" media="screen, projection">	
     <link rel="stylesheet" href="/media/css/custom.css" type="text/css" media="screen, projection">	
     <link rel="stylesheet" href="/media/css/pagination.css" type="text/css" media="screen, projection">	
     <script type="text/javascript" src="/media/js/jquery-1.6.2.min.js"></script>
@@ -31,52 +30,72 @@
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
     </script>
-    <div class="header-container">
-        <div class="container">
-            <div id="header" class="span-24 last">
-                <div class="span-17">
-                    <h1 id="branding"><a href="/">Mark Liu</a></h1> <div class="light-grey-text">Co-founder of Leaguevine</div>
+    <div id='outer-wrapper'>
+        <div id='wrap2'>
+            <div id='header-wrapper'>
+                <div class="header section" id="header">
+                    <div class="widget Header" id="Header1">
+                        <div id="header-inner">
+                            <div class='titlewrapper' style='background: transparent'>
+                                <h1 class='title'>
+                                    <a href="/">Mark Liu</a>
+                                </h1>
+                            </div>
+                            <div class='descriptionwrapper'>
+                                <p class='description'><span>Co-founder of Leaguevine</span></p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="span-7 last">
-                    <ul id="main-nav">
-                        <li id="main-nav-entries" {% if not is_about %}class="selected"{% endif %}><a href="{% url coltrane_entry_archive_index %}">Blog</a></li>
+                <div class="clearfix" id="topMenuCont">
+                    <ul class="clearfix">
                         <li id="main-nav-about" {% if is_about %}class="selected"{% endif %}><a href="/about/">About</a></li>
+                        <li id="main-nav-entries" {% if not is_about %}class="selected"{% endif %}><a href="{% url coltrane_entry_archive_index %}">Blog</a></li>
                     </ul>
                 </div>
             </div>
+            <div id="content-wrapper">
+                <div id="crosscol-wrapper" style="text-align:center"></div>
+                <div id="main-wrapper">
+                    <div class="main section" id="main">
+                        <div class="widget Blog" id="Blog1">
+                            <div class="blog-posts hfeed">
+                                {% block content %}
+                                {% endblock %}
+                                <div id="comments">
+                                    {% block comments %}
+                                    {% endblock %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="sidebar-wrapper">
+                    <div class="sidebar section" id="sidebar">
+                        {% block right-sidebar %}
+                        <div class="widget Label" id="Label1">
+                            <h2>Tweets</h2>
+                            <div class="widget-content">
+                                {% load coltrane_tags %}
+                                {% load twitter_tags %}
+                                {% get_twitter_messages user MarkWLiu limit 7 as tweets %}
+                                <ul>
+                                {% for tweet in tweets %}
+                                    <li>
+                                        <div class="tweet"><a href="{{ tweet.url }}">{{ tweet.text }}</a></div>
+                                    </li>
+                                {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                        {% endblock %}
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
-    <div class="container">
-        <div class="span-16">
-            <div id="content">
-                {% block content %}
-                {% endblock %}
-            </div>
-            <div id="comments">
-                {% block comments %}
-                {% endblock %}
-            </div>
-        </div>
-        <div class="span-1">&nbsp;</div>
-        <div id="right-sidebar" class="span-7 last">
-            {% block right-sidebar %}
-            <div class="sidebar-block">
-                <h3>Recent Tweets</h3>
-                {% load coltrane_tags %}
-                {% load twitter_tags %}
-                {% get_twitter_messages user MarkWLiu limit 7 as tweets %}
-                <ul class="links">
-                {% for tweet in tweets %}
-                    <li>
-                    <div class="quote"><img height="15px" src="/media/images/quotes.jpg"></div> <div class="tweet"><a href="{{ tweet.url }}">{{ tweet.text }}</a></div>
-                    </li>
-                {% endfor %}
-                </ul>
-                &nbsp;
-            </div>
-            {% endblock %}
-        </div>
-    </div>
+
     <div class="footer-container-1">
         <div class="container">
             <div id="footer-1" class="span-24 last">

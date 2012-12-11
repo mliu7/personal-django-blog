@@ -39,9 +39,27 @@
     </script>
 {% endblock %}
 
-{% block right-sidebar %}{{ block.super }} 
-    <div class="sidebar-block">
-        <h3>Categories</h3>
+{% block right-sidebar %}
+    <div class="widget Label" id="Label1">
+        <h2>Latest Entries</h2>
+        <div class="widget-content">
+            <div id="latest_entries_pagination"></div>
+            <ul id="latest_entries_result"></ul>
+            {% load coltrane_tags %}
+            {% get_latest_content coltrane.entry 10 as latest_entries %}
+            <ul id="latest_entries" class="links" style="display:none;">
+
+                {% for entry in latest_entries %}
+                    <li class="entry">
+                        <a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="widget Label" id="Label1">
+        <h2>Categories</h2>
+        <div class="widget-content">
         {% load coltrane_tags %}
         {% categories_for_model coltrane.entry as entry_categories with counts %}
             <ul class="links">
@@ -53,34 +71,20 @@
                     {% endif %}
                 {% endfor %}
             </ul>
+        </div>
     </div>
-    <div class="sidebar-block">
-        <h3>Latest Entries</h3>
-        <div id="latest_entries_pagination"></div>
-        <ul id="latest_entries_result"></ul>
-        {% load coltrane_tags %}
-        {% get_latest_content coltrane.entry 10 as latest_entries %}
-        <ul id="latest_entries" class="links" style="display:none;">
-            {% for entry in latest_entries %}
-                <li class="entry">
-                    <a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a>
-                </li>
-            {% endfor %}
-            </div>
-        </ul>
-    </div>
-    <!--
-    <div class="sidebar-block">
-        <h3>All Entry Tags</h3>
+    <div class="widget Label" id="Label1">
+        <h2>All Entry Tags</h2>
+        <div class="widget-content">
         {% load tagging_tags %}
         {% tags_for_model coltrane.entry as entry_tags with counts %}
         <ul class="tags">
         {% for tag in entry_tags %}
             <li>
-                <a href="{% url coltrane_entry_archive_tag tag.name %}">{{ tag.name }}</a> x {{ tag.count }}
+                <a href="{% url coltrane_entry_archive_tag tag.name %}">{{ tag.name }}</a> ({{ tag.count }})
             </li>
         {% endfor %}
         </ul>
     </div>
-    -->
+    {{ block.super }} 
 {% endblock %}

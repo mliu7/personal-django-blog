@@ -7,21 +7,41 @@
 {% endblock %}
 
 {% block content %}
-    <h1>{{ object.title }}</h1>
-    <div class="date-published">{{ object.pub_date|date:"F j, Y" }}</div>
-    <!--
-        {% if object.categories.count %}
-            Under 
-            {% for category in object.categories.all %}
-                <a href="{{ category.get_absolute_url }}">{{ category.title }}</a>
-                {% if forloop.last %}{% else %}
-                    {% ifequal forloop.revcounter0 1 %}and {% else %}, {% endifequal %}
-                {% endif %}
-            {% endfor %}
-        {% endif %} 
-    -->
-
-    {{ object.body_html|safe }}
+    <h2 class="date-header">
+        {{ object.pub_date|date:"l, F j, Y" }}
+    </h2>
+    <div class="post hentry">
+        <h1 class="post-title entry-title">
+            <a href="{{ object.get_absolute_url }}">
+                {{ object.title }}
+            </a>
+        </h3>
+        <div class="post-header-line-1">
+            <span class="post-labels">
+                {% if object.categories.count %}
+                    Tags: 
+                    {% for category in object.categories.all %}
+                        <a href="{{ category.get_absolute_url }}">{{ category.title }}</a>
+                        {% if forloop.last %}{% else %}
+                            {% ifequal forloop.revcounter0 1 %}and {% else %}, {% endifequal %}
+                        {% endif %}
+                    {% endfor %}
+                {% endif %} 
+            </span>
+        </div>
+        <div class="post-body entry-content">
+            {{ object.body_html|safe }}
+        </div>
+        <div class="post-footer">
+            <div class="post-footer-line post-footer-line-1">
+                <span class="post-icons">
+                </span>
+            </div>
+            <div class="post-footer-line post-footer-line-2"></div>
+            <div class="post-footer-line post-footer-line-3"></div>
+            <div class="clear"></div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block comments %}
