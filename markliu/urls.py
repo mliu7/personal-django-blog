@@ -6,9 +6,6 @@ admin.autodiscover()
 
 from coltrane.feeds import CategoryFeed, LatestEntriesFeed
 
-feeds = { 'latest': LatestEntriesFeed,
-          'categories': CategoryFeed }
-
 urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
 
@@ -22,7 +19,11 @@ urlpatterns = patterns('',
     (r'^links/', include('coltrane.urls.links')),
     (r'^tags/', include('coltrane.urls.tags')),
     
-    (r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed', { 'feed_dict': feeds }),
+    (r'^feeds/latest/$', LatestEntriesFeed()),
+    # This isn't working yet
+    (r'^feeds/categories/(?P<category_name>.*)/$', CategoryFeed()), 
+    # This is how we set up the category feed for django 1.2 which used to work ok
+    #(r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed', { 'feed_dict': feeds }),
 
     (r'', include('coltrane.urls.entries')),
 )

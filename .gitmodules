@@ -7,3 +7,6 @@
 [submodule "markliu/submodules/coltrane-blog"]
 	path = markliu/submodules/coltrane-blog
 	url = https://github.com/mliu7/coltrane-blog.git
+[submodule "markliu/submodules/django-posterous"]
+	path = markliu/submodules/django-posterous
+	url = https://github.com/mliu7/django-posterous.git
