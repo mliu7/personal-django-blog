@@ -60,8 +60,8 @@
     <div class="widget Label" id="Label1">
         <h2>Categories</h2>
         <div class="widget-content">
-        {% load coltrane_tags %}
-        {% categories_for_model coltrane.entry as entry_categories with counts %}
+            {% load coltrane_tags %}
+            {% categories_for_model coltrane.entry as entry_categories with counts %}
             <ul class="links">
                 {% for category in entry_categories %}
                     {% if category.count %}
@@ -76,15 +76,16 @@
     <div class="widget Label" id="Label1">
         <h2>All Entry Tags</h2>
         <div class="widget-content">
-        {% load tagging_tags %}
-        {% tags_for_model coltrane.entry as entry_tags with counts %}
-        <ul class="tags">
-        {% for tag in entry_tags %}
-            <li>
-                <a href="{% url coltrane_entry_archive_tag tag.name %}">{{ tag.name }}</a> ({{ tag.count }})
-            </li>
-        {% endfor %}
-        </ul>
+            {% load tagging_tags %}
+            {% tags_for_model coltrane.entry as entry_tags with counts %}
+            <ul class="tags">
+            {% for tag in entry_tags %}
+                <li>
+                    <a href="{% url coltrane_entry_archive_tag tag.name %}">{{ tag.name }}</a> ({{ tag.count }})
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
     </div>
     {{ block.super }} 
 {% endblock %}

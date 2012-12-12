@@ -3,3 +3,15 @@
     padding-left: 15px;
     padding-top: 5px;
 }
+
+.image-block {
+    clear: both;
+    border-color: #60605B;
+    background-color: #60605B;
+    padding: 3px;
+    padding-bottom: 0px;
+}
+    .image-block img {
+        width: 100%;
+    }
+

@@ -17,7 +17,7 @@ border-width:0;
 
 a {
 color: #0C9FE7;text-decoration:none;
-word-break: break-all;
+word-break: normal;
 }
 
 a:hover {
@@ -34,10 +34,6 @@ font-weight:normal;
 padding:10px 0 0;
 font-style:italic;
 font-family:Georgia, "Times New Roman", Times, serif;
-}
-
-h1 a, h2 a, h3 a {
-    word-break: normal;
 }
 
 ul {
@@ -205,6 +201,7 @@ background:url(http://lh6.ggpht.com/_Kwwy9VyLMKw/S3qDmsP5fDI/AAAAAAAACxg/IcfOfp7
 .post {
     margin-bottom:40px;
     word-break: hyphenate;
+    overflow: hidden;
 }
 
 .post-author {
@@ -523,8 +520,10 @@ letter-spacing:.1em;
 /* Footer
 ----------------------------------------------- */
 #footer-bg {
+clear: both;
 background:url(http://lh3.ggpht.com/_Kwwy9VyLMKw/S3qEkGmISKI/AAAAAAAACyw/k1TIvQN3osM/bk_footer.png) 0 0 repeat-x;
 margin-top:15px;
+margin-bottom: 30px;
 }
 
 #footer-wrapper {
