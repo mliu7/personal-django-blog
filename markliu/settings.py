@@ -43,6 +43,9 @@ if LIVEHOST:
     DISQUS_API_KEY = os.environ['DISQUS_API_KEY'] 
     DELICIOUS_PASSWORD = os.environ['DELICIOUS_PASSWORD'] 
 
+    MEDIA_ROOT = ''
+    MEDIA_URL = ''
+
 else:
     DEBUG = True
 
