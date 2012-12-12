@@ -73,19 +73,5 @@
             </ul>
         </div>
     </div>
-    <div class="widget Label" id="Label1">
-        <h2>All Entry Tags</h2>
-        <div class="widget-content">
-            {% load tagging_tags %}
-            {% tags_for_model coltrane.entry as entry_tags with counts %}
-            <ul class="tags">
-            {% for tag in entry_tags %}
-                <li>
-                    <a href="{% url coltrane_entry_archive_tag tag.name %}">{{ tag.name }}</a> ({{ tag.count }})
-                </li>
-            {% endfor %}
-            </ul>
-        </div>
-    </div>
     {{ block.super }} 
 {% endblock %}
