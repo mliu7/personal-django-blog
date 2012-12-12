@@ -1,7 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>About me</h1>
+<div class="post hentry">
+    <h3 class="post-title entry-title">
+        About me
+    </h3>
 
 <p>Hi, I'm Mark, and this is my blog. 
 I am currently working full time as the founder of <a href="http://leaguevine.com">Leaguevine</a>, and am enjoying every minute of it.
@@ -61,6 +64,7 @@ I am privileged to work and collaborate with some amazing people am working on s
 The best part of all this is probably the fact that I have a chance to build something from the ground up.
 </p>
 
+</div>
 {% endblock %}
 
 {% block right-sidebar %}
@@ -68,4 +72,3 @@ The best part of all this is probably the fact that I have a chance to build som
     &nbsp;
     {{ block.super }}
 {% endblock %}
-
