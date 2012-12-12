@@ -79,6 +79,10 @@ else:
     if 'collectstatic' in sys.argv:
         USE_STATICFILES = True
 
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_ROOT, './media/'),
+)
+
 
 TEMPLATE_DEBUG = DEBUG
 
@@ -127,6 +131,7 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
+    'django.contrib.staticfiles',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.markup',
