@@ -9,7 +9,7 @@ REMOTE_BACKUP_DIR = '/home/mliu/webapps/django/backups/'
 REMOTE_PROJECT_PATH = '/home/mliu/webapps/django/'
 
 env.roledefs = {
-    'web': ['web138.webfaction.com']
+    'web': ['web122.webfaction.com']
 }
 
 class App:

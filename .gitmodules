@@ -1,0 +1,9 @@
+[submodule "markliu/submodules/django-twitter-tags"]
+	path = markliu/submodules/django-twitter-tags
+	url = https://github.com/mliu7/django-twitter-tags.git
+[submodule "markliu/submodules/django-google-webmaster"]
+	path = markliu/submodules/django-google-webmaster
+	url = https://github.com/mliu7/django-google-webmaster.git
+[submodule "markliu/submodules/coltrane-blog"]
+	path = markliu/submodules/coltrane-blog
+	url = https://github.com/mliu7/coltrane-blog.git

@@ -3,7 +3,7 @@
 {% block title %}{{ block.super }} | {{ object.title }}{% endblock %}
 
 {% block extra-css %}{{ block.super }} 
-    <link rel="stylesheet" href="/media/css/blueprint/plugins/buttons/screen.css" type="text/css" media="screen, projection">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/blueprint/plugins/buttons/screen.css" type="text/css" media="screen, projection">
 {% endblock %}
 
 {% block content %}

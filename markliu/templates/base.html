@@ -5,12 +5,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>{% block title %}Mark's Blog{% endblock %}</title>
 
-    <link rel="stylesheet" href="/media/css/style.css" type="text/css" media="screen, projection">	
-    <link rel="stylesheet" href="/media/css/custom.css" type="text/css" media="screen, projection">	
-    <link rel="stylesheet" href="/media/css/pagination.css" type="text/css" media="screen, projection">	
-    <script type="text/javascript" src="/media/js/jquery-1.6.2.min.js"></script>
-    <script type="text/javascript" src="/media/js/jquery.pagination.js"></script>
-    <!--[if lt IE 8]><link rel="stylesheet" href="/media/css/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css" type="text/css" media="screen, projection">	
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/custom.css" type="text/css" media="screen, projection">	
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/pagination.css" type="text/css" media="screen, projection">	
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.6.2.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.pagination.js"></script>
+    <!--[if lt IE 8]><link rel="stylesheet" href="{{ STATIC_URL }}css/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
     {% block extra-js %}{% endblock %}
     <link rel="alternate" type="application/atom+xml" title="Latest Entries" href="/feeds/latest/" />
     {% load google_webmaster_tags %}
@@ -101,7 +101,7 @@
                     <div class="footer section" id="footer-1">
                         <h2>Thanks for visiting!</h2>
                         <div class="widget-content">
-                            <div class="image-block"><img src="/media/images/mark_liu_with_kids.jpg" alt="Profile Picture" /></div>
+                            <div class="image-block"><img src="{{ STATIC_URL }}images/mark_liu_with_kids.jpg" alt="Profile Picture" /></div>
                         </div>
                     </div>
                     <div class="footer section" id="footer-2">
@@ -118,12 +118,12 @@
                         <h2>Follow Me</h2>
                         <div class="widget-content">
                             <ul class="links">
-                                <li><a target="_blank" href="https://www.leaguevine.com/players/1/mark-spike-liu/"><img height="30px" src="/media/images/icons/leaguevine.png"> Leaguevine</a></li>
-                                <li><a target="_blank" href="http://www.facebook.com/mliu7"><img height="30px" src="/media/images/icons/facebook.png"> Facebook</a></li>
-                                <li><a target="_blank" href="http://twitter.com/MarkWLiu"><img height="30px" src="/media/images/icons/twitter.png"> Twitter</a></li>
-                                <li><a target="_blank" href="http://www.linkedin.com/in/markwliu"><img height="30px" src="/media/images/icons/linkedin.png"> LinkedIn</a></li>
-                                <li><a target="_blank" href="http://github.com/mliu7"><img height="30px" src="/media/images/icons/github.png"> Github</a></li>
-                                <li><a target="_blank" href="http://stackoverflow.com/users/205808/spike"><img height="30px" src="/media/images/icons/stackoverflow.png"> Stackoverflow</a></li>
+                                <li><a target="_blank" href="https://www.leaguevine.com/players/1/mark-spike-liu/"><img height="30px" src="{{ STATIC_URL }}images/icons/leaguevine.png"> Leaguevine</a></li>
+                                <li><a target="_blank" href="http://www.facebook.com/mliu7"><img height="30px" src="{{ STATIC_URL }}images/icons/facebook.png"> Facebook</a></li>
+                                <li><a target="_blank" href="http://twitter.com/MarkWLiu"><img height="30px" src="{{ STATIC_URL }}images/icons/twitter.png"> Twitter</a></li>
+                                <li><a target="_blank" href="http://www.linkedin.com/in/markwliu"><img height="30px" src="{{ STATIC_URL }}images/icons/linkedin.png"> LinkedIn</a></li>
+                                <li><a target="_blank" href="http://github.com/mliu7"><img height="30px" src="{{ STATIC_URL }}images/icons/github.png"> Github</a></li>
+                                <li><a target="_blank" href="http://stackoverflow.com/users/205808/spike"><img height="30px" src="{{ STATIC_URL }}images/icons/stackoverflow.png"> Stackoverflow</a></li>
                             </ul>
                         </div>
                     </div>

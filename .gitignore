@@ -1,5 +1,5 @@
-# Ignore the settings file
-settings.py
+# Ignore the local settings file
+local_settings.py
 
 # Ignore the database
 *.db

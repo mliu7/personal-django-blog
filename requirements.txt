@@ -1,12 +1,21 @@
-python-twitter
-Django==1.2.1
+psycopg2==2.4.5
+distribute==0.6.32
+python-twitter==0.8.2
+Django==1.4.1
 Markdown==2.0.3
 South==0.7.1
 django-debug-toolbar==0.8.3
 django-disqus==0.3.2
 django-tagging==0.3.1
 feedparser==4.1
-http://pydelicious.googlecode.com/svn/trunk/
+pydelicious==0.6
 simplejson==2.1.1
 wsgiref==0.1.2
 yolk==0.4.1
+django-storages==1.1.4
+boto==2.3.0
+celery==3.0.11
+django-celery==3.0.11
+
+# For Heroku
+dj-database-url==0.2.1
