@@ -34,41 +34,40 @@
 {% endblock %}
 
 {% block content %}
-    {% for entry in object_list %}
-        <h2 class="date-header">
-            {{ entry.pub_date|date:"l, F j, Y" }}
-        </h2>
-        <div class="post hentry">
-            <h3 class="post-title entry-title">
-                <a href="{{ entry.get_absolute_url }}">
-                    {{ entry.title }}
-                </a>
-            </h3>
-            <div class="post-header-line-1">
-                <span class="post-labels">
-                </span>
-                <span class="post-comment-link">
-                    <a href="{{ entry.get_absolute_url }}"  class="grey-text">View Comments</a>
-                </span>
-            </div>
-            <div class="post-body entry-content">
-                {{ entry.body_html|safe }}
-            </div>
-            <div class="jump-link">
-                <a href="{{ entry.get_absolute_url }}">
-                    <img alt="Hosted by imgur.com" src="http://lh5.ggpht.com/_Kwwy9VyLMKw/S3qD5C2ehpI/AAAAAAAACxs/wXR1PrS0Oko/but_readmore.png">
-                </a>
-            </div>
-            <div class="post-footer">
-                <div class="post-footer-line post-footer-line-1">
-                    <span class="post-icons">
-                    </span>
+    <div id="Searchresult">
+    </div>
+    <div id="entries" style="display:none;">
+        {% for entry in object_list %}
+            <div class="entry">
+                <h2 class="date-header">
+                    {{ entry.pub_date|date:"l, F j, Y" }}
+                </h2>
+                <div class="post hentry">
+                    <h3 class="post-title entry-title">
+                        <a href="{{ entry.get_absolute_url }}">
+                            {{ entry.title }}
+                        </a>
+                    </h3>
+                    <div class="post-body entry-content">
+                        {{ entry.body_html|striptags|safe|truncatewords:80 }}
+                    </div>
+                    <div class="jump-link">
+                        <a href="{{ entry.get_absolute_url }}">
+                            <img alt="Hosted by imgur.com" src="http://lh5.ggpht.com/_Kwwy9VyLMKw/S3qD5C2ehpI/AAAAAAAACxs/wXR1PrS0Oko/but_readmore.png">
+                        </a>
+                    </div>
+                    <div class="post-footer">
+                        <div class="post-footer-line post-footer-line-1">
+                            <span class="post-icons">
+                            </span>
+                        </div>
+                        <div class="post-footer-line post-footer-line-2"></div>
+                        <div class="post-footer-line post-footer-line-3"></div>
+                        <div class="clear"></div>
+                    </div>
                 </div>
-                <div class="post-footer-line post-footer-line-2"></div>
-                <div class="post-footer-line post-footer-line-3"></div>
-                <div class="clear"></div>
             </div>
-        </div>
-    {% endfor %}
+        {% endfor %}
+    </div>
     <div id="Pagination"></div>
 {% endblock %}

@@ -48,20 +48,3 @@
     {% load disqus_tags %}
     {% disqus_show_comments %}
 {% endblock %}
-
-{% block right-sidebar %}
-    <!--
-    <div class="sidebar-block">
-        <h3>This Post's Tags</h3>
-        {% load tagging_tags %}
-        {% tags_for_object object as object_tags %}
-        <ul class="tags">
-        {% for tag in object_tags %}
-            <li>
-                <a href="{% url coltrane_entry_archive_tag tag.name %}">{{ tag.name }}</a>
-            </li>
-        {% endfor %}
-    </div>
-    -->
-    {{ block.super }}
-{% endblock %}
