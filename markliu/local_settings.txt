@@ -1,0 +1,31 @@
+import sys   
+
+
+# Django storages
+AWS_ACCESS_KEY_ID = '' # This is your access key for your AWS S3 account
+AWS_SECRET_ACCESS_KEY = '' # This is the secret key for your AWS S3 Account
+AWS_STORAGE_BUCKET_NAME = '' # The name of the AWS S3 Bucket you want all of your files to live in
+S3_URL = 'https://s3.amazonaws.com/{0}/'.format(AWS_STORAGE_BUCKET_NAME)
+if 'collectstatic' in sys.argv:
+    USE_STATICFILES = True
+
+
+GOOGLE_WEBMASTER_KEY = '' # This is your key for your Google Analytics Account
+
+SECRET_KEY = '' # This is just a random key of text that all Django apps require. You can make it up
+
+DISQUS_API_KEY = '' # This is your DISQUS API key that allows your comment system to work
+
+DELICIOUS_PASSWORD = '' # This connections your delicious account if you have one. It is only relevant if you use certain features of the coltrane-blog
+
+DATABASES = {
+  'default': {
+    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    'NAME': 'myblog_dev',
+    'HOST': '',
+    'PORT': 5432,
+    'USER': 'username',
+    'PASSWORD': 'password',
+    'OPTIONS': {'autocommit': True }
+  }
+} 

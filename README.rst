@@ -2,10 +2,11 @@
 
 This is the code for Mark Liu's personal blog. You are free to use it or modify it however you please.
 
+
 Local Installation
 ==================
 
-This blog is just the glue that holds together several other more powerful django applications. You will need to install these other applications for the blog to work. I highly recommend using pip and virtualenv for doing so, so you do not run into any conflicts with other python applications you may be running now or in the future. 
+This blog is just the glue that holds together several other more powerful django applications. I highly recommend using pip and virtualenv for doing so, so you do not run into any conflicts with other python applications you may be running now or in the future. 
 
 I will assume you already have git installed and will not work you through that. Next, you need to have pip, and virtualenv installed. To do that, simply run::
 
@@ -15,65 +16,100 @@ I will assume you already have git installed and will not work you through that.
 
 Next, you need to create a virtualenvironment, and install this blog along with its dependencies. For that, you could do something like::
     
-    $ mkdir myblog
-    $ cd myblog
     $ mkvirtualenv myblog
     $ workon myblog
 
-Next, you need to have Django installed::
-    
-    $ pip install django
+Now you're ready to clone this repo and get working::
 
-Now we need to copy all the code I wrote into your local directory::
-
-    $ git clone -q git@github.com:mliu7/personal-django-blog.git    
-    $ git clone -q git@github.com:mliu7/django-twitter-tags.git
-    $ git clone -q git@github.com:mliu7/django-google-webmaster.git
-    $ git clone -q git@github.com:mliu7/coltrane-blog.git
-
-All of this code is now copied locally, but we need to make sure it is all on our virtual environment's python path. To do that, we can just type the following::
-
-    $ add2virtualenv django-twitter-tags
-    $ add2virtualenv django-google-webmaster
-    $ add2virtualenv coltrane-blog
-
-Next, we need to install some django apps this code is dependent on::
-
+    $ git clone https://github.com/mliu7/personal-django-blog.git
     $ cd personal-django-blog
-    $ pip install distribute
+
+Next, you need to install all of the dependencies::
+
     $ pip install -r requirements.txt
 
-Finally, you need to add a ``settings.py`` file in the ``myblog/personal-django-blog/markliu`` folder. There is a sample settings file called ``sample_settings.py`` that you can modify to your liking. Django has great documentation for you to set up one of these on your own. 
+Next, you will need to download and update all of the git submodules::
 
-Once your settings file is complete and you have set up all your database preferences, you can create the database by running django's built in ``syncdb`` command followed by some built in south commands. Before you can do this, though, you'll want to comment out the coltrane app declaration in your ``settings.py`` file so we can create a fresh south installation of this app. In other words, comment this line in your ``settings.py`` file::
+    $ git submodule init
+    $ git submodule update
 
-    INSTALLED_APPS = (
-        ... 
-        #'coltrane',
-        ...
-    )
+Next, you need to update your python path so your system knows where to look for these submodules::
 
-Once this is commented out, you can create all of the database tables for your app except for the coltrane tables by running::
+    $ add2virtualenv .
+    $ cd markliu
+    $ add2virtualenv .
+    $ cd submodules
+    $ add2virtualenv coltrane-blog
+    $ add2virtualenv django-google-webmaster
+    $ add2virtualenv django-posterous
+    $ add2virtualenv django-twitter-tags
 
+Next, configure your local settings by copying `local_settings.txt` to `local_settings.py` and filling in all of the necessary fields::
+
+    $ cd ..
+    $ cp local_settings.txt local_settings.py
+    $ vi local_settings.py
+
+Next, you'll need to create your database::
+
+    $ createdb myblog_dev
     $ python manage.py syncdb
+    $ python manage.py migrate
 
-After these tables are created and you set up your superuser account which it asks you to do automatically, jump back into your ``settings.py`` file and uncomment that line::
+Once you've done that you can run your server::
 
-    INSTALLED_APPS = (
-        ... 
-        'coltrane',
-        ...
-    )
-
-Close ``settings.py`` and create your first south migration for the coltrane app::
-
-    $ python manage.py schemamigration coltrane --init
-    $ python manage.py migrate coltrane
-
-Now that you've done this, you can start your webserver and it should work! Just run the following::
-    
     $ python manage.py runserver
 
 If you navigate to ``http://127.0.0.1:8000/`` you should see the blog, and if you navigate to ``http://127.0.0.1:8000/admin`` you should be able to add some entries and links to the blog. 
 
-Good luck, and I hope this helps some people out there!
+
+Deploying to Heroku
+===================
+
+This part is surprisingly easy because Heroku is awesome. You can follow their instructions here: https://devcenter.heroku.com/articles/django#deploy-to-heroku
+
+If you're too lazy to read that, just download the heroku toolbelt and do this::
+
+    $ heroku create
+    $ git push heroku master
+
+You will now need to create the database on heroku::
+
+    $ heroku run python markliu/manage.py syncdb
+    $ heroku run python markliu/manage.pymigrate 
+
+Next, you'll need to set your environment variables on Heroku as specified in this tutorial: https://devcenter.heroku.com/articles/config-vars ::
+
+    $ heroku config:add AWS_STORAGE_BUCKET_NAME=mybucket
+    $ heroku config:add AWS_SECRET_ACCESS_KEY=
+    $ heroku config:add AWS_ACCESS_KEY_ID=
+    $ heroku config:add GOOGLE_WEBMASTER_KEY=
+    $ heroku config:add SECRET_KEY=
+    $ heroku config:add DISQUS_API_KEY=
+    $ heroku config:add DELICIOUS_PASSWORD=
+    
+I left the actual values off which you'll have to fill in of course. And finally, you'll have to update the python path to point to all of the submodules.::
+
+    $ heroku config:add PYTHONPATH=/app:/app/markliu/:/app/markliu/templates/:/app/markliu/submodules/coltrane-blog/:/app/markliu/submodules/django-google-webmaster/:/app/markliu/submodules/django-posterous/:/app/markliu/submodules/django-twitter-tags/
+
+That should be it! If you have any problems with any of these steps, Heroku's documentation is excellent and should help you resolve your issues.
+
+
+Deploying your static resources to S3
+=====================================
+
+This repository is set up to work with Amazon S3. The way this works is you send your static resources to S3 when you are on your localhost and then when you are on production your site uses the S3 URL to fetch those static resources.
+
+From your local environment, do the following::
+
+    $ python manage.py collectstatic
+
+Collectstatic will copy all of your files to the AWS and heroku will use the S3 URL you specified to 
+
+
+Updating the database from Production
+=====================================
+
+Since this blog connects to Heroku, you should first download the datadump from heroku. Then run the following command:
+
+pg_restore -U username -d markliu_dev -O --clean latest.dump 

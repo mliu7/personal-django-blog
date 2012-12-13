@@ -14,7 +14,6 @@ else:
     LIVEHOST = True
 
 
-S3_URL = 'https://s3.amazonaws.com/markliu/'
 USE_STATICFILES = False
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
@@ -31,9 +30,12 @@ if LIVEHOST:
     DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
 
     # Django storages
+    AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
     AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
     AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
     USE_STATICFILES = True
+
+    S3_URL = 'https://s3.amazonaws.com/{0}/'.format(AWS_STORAGE_BUCKET_NAME)
 
     # URL prefix for static files.
     STATIC_URL = S3_URL
@@ -180,7 +182,6 @@ DJANGO_POSTEROUS_AUTHOR_FIELD = 'author'    # The name of the field where the au
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 if USE_STATICFILES:
     STATICFILES_STORAGE = DEFAULT_FILE_STORAGE
-AWS_STORAGE_BUCKET_NAME = 'markliu'
 AWS_QUERYSTRING_AUTH = False
 AWS_HEADERS = {
     'Cache-Control': 'max-age=3600',
