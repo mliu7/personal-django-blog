@@ -20,10 +20,7 @@ urlpatterns = patterns('',
     (r'^tags/', include('coltrane.urls.tags')),
     
     (r'^feeds/latest/$', LatestEntriesFeed()),
-    # This isn't working yet
     (r'^feeds/categories/(?P<category_name>.*)/$', CategoryFeed()), 
-    # This is how we set up the category feed for django 1.2 which used to work ok
-    #(r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed', { 'feed_dict': feeds }),
 
     (r'', include('coltrane.urls.entries')),
 )
