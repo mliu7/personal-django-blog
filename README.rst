@@ -110,6 +110,6 @@ Collectstatic will copy all of your files to the AWS and heroku will use the S3 
 Updating the database from Production
 =====================================
 
-Since this blog connects to Heroku, you should first download the datadump from heroku. Then run the following command:
+Since this blog connects to Heroku, you should first download the datadump from heroku. Then run the following command::
 
-pg_restore -U username -d markliu_dev -O --clean latest.dump 
+    $ pg_restore -U username -d markliu_dev -O --clean latest.dump 
