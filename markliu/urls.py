@@ -9,10 +9,12 @@ from coltrane.feeds import CategoryFeed, LatestEntriesFeed
 urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
 
-    #Static media url not needed for production because it is being served by nginx
+    #Static media url not needed for production
     (r'^media/(?P<path>.*)$', 'django.views.static.serve',
         {'document_root': settings.MEDIA_ROOT}),
     
+    (r'^favicon\.ico$', 'django.views.generic.simple.redirect_to', {'url': '{0}images/favicon.ico'.format(settings.STATIC_URL)}),
+
     (r'^about/', 'django.views.generic.simple.direct_to_template', {'template': 'about.html',
                                                                     'extra_context': {'is_about': True}}),
     (r'^categories/', include('coltrane.urls.categories')),
