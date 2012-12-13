@@ -5,6 +5,8 @@
 {% url admin:jsi18n as jsi18nurl %}
 <script type="text/javascript" src="{{ jsi18nurl|default:"../../../jsi18n/" }}"></script>
 {{ media }}
+<!-- To Enable TinyMCE, Uncomment the following block -->
+<!-- 
 <script type="text/javascript" src="/media/js/tiny_mce/tiny_mce.js"></script>
 <script type="text/javascript">
 tinyMCE.init({
@@ -13,6 +15,7 @@ tinyMCE.init({
     height: "600"
 });
 </script>
+-->
 {% endblock %}
 
 {% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% admin_media_prefix %}css/forms.css" />{% endblock %}

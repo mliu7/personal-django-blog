@@ -51,6 +51,8 @@
                     <ul class="clearfix">
                         <li id="main-nav-about" {% if is_about %}class="selected"{% endif %}><a href="/about/">About</a></li>
                         <li id="main-nav-entries" {% if not is_about %}class="selected"{% endif %}><a href="{% url coltrane_entry_archive_index %}">Blog</a></li>
+                        <li id="main-nav-entries-tech" {% if not is_about %}class="selected"{% endif %}><a href="{% url coltrane_category_detail "technical" %}">Tech Stuff</a></li>
+                        <li id="main-nav-entries-non-tech" {% if not is_about %}class="selected"{% endif %}><a href="{% url coltrane_category_detail "non-technical" %}">Non-Tech Stuff</a></li>
                     </ul>
                 </div>
             </div>

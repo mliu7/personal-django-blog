@@ -31,13 +31,13 @@ outline:none;
 h1 {
 letter-spacing:-1px;
 font-weight:normal;
-padding:10px 0 0;
+padding:10px 0;
 font-style:italic;
 font-family:Georgia, "Times New Roman", Times, serif;
 }
 
 h2 {
-padding: 10px 0 0;
+padding: 10px 0;
 }
 
 ul {
@@ -198,6 +198,7 @@ font-family:Arial,Helvetica,sans-serif;
 font-size:10px;
 line-height:1em;
 padding-left:15px;
+padding-bottom: 0px;
 background:url(http://lh6.ggpht.com/_Kwwy9VyLMKw/S3qDmsP5fDI/AAAAAAAACxg/IcfOfp7BuV4/bullet_star_featured.png) 0 50% no-repeat;
 }
 
