@@ -72,7 +72,7 @@ else:
     # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
     # trailing slash.
     # Examples: "http://foo.com/media/", "/media/".
-    ADMIN_MEDIA_PREFIX = '/amedia/'
+    ADMIN_MEDIA_PREFIX = '/media/admin/'
 
     STATIC_URL = '/media/'
 
@@ -119,6 +119,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
 
     # Debug toolbar. This goes after any middleware that encodes the response's content.
     'debug_toolbar.middleware.DebugToolbarMiddleware',
@@ -138,6 +139,7 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.markup',
+    'django.contrib.messages',
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.admin',
