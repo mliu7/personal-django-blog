@@ -74,6 +74,19 @@
                 </div>
                 <div id="sidebar-wrapper">
                     <div class="sidebar section" id="sidebar">
+                        {% block subscribe %}
+                        <div class="widget Label" id="Label1">
+                            <h2>Subscribe</h2>
+                            <div class="widget-content">
+                                <ul>
+                                    <li class="rss"><a href="http://feeds.feedburner.com/markliu" target="_blank">All posts</a></li>
+                                    <li class="rss"><a href="http://feeds.feedburner.com/markliu-technical-posts" target="_blank">Technical posts only</a></li>
+                                    <li class="rss"><a href="http://feeds.feedburner.com/markliu-non-technical-posts" target="_blank">Non-technical posts only</a></li>
+                                    <li class="email"><a href="http://feedburner.google.com/fb/a/mailverify?uri=markliu-non-technical-posts&amp;loc=en_US" target="_blank">Non-technical posts by email</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        {% endblock %}
                         {% block right-sidebar %}
                         <div class="widget Label" id="Label1">
                             <h2>Tweets</h2>

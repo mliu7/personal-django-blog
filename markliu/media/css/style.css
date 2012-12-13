@@ -465,6 +465,14 @@ color:#888;
 background:url(http://lh5.ggpht.com/_Kwwy9VyLMKw/S3qDQ6fPxnI/AAAAAAAACw0/jHNvjs631gI/bullet_star.png) 0 11px no-repeat;
 }
 
+.sidebar ul li.rss {
+background:url(../images/icons/rss_12x12.png) 0 11px no-repeat;
+}
+
+.sidebar ul li.email {
+background:url(../images/icons/email_12x12.png) 0 11px no-repeat;
+}
+
 .sidebar ul li a {
 color:#888;
 }
